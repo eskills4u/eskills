@@ -1,0 +1,274 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block content %}
+<head>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+<!--
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/** {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #eee
+}*/
+
+.wrapper {
+    width: 600px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 3px 3px 36px rgba(0, 0, 0, 0.2)
+
+}
+
+.wrapper .title {
+    color: #fff;
+    line-height: 65px;
+    text-align: center;
+    background: #9C27B0;
+    font-size: 25px;
+    font-weight: 500;
+    border-radius: 4px 4px 0 0
+}
+
+.wrapper .box {
+    padding: 20px 30px;
+    background: #fff;
+    border-radius: 10px
+}
+
+.wrapper .box label {
+    display: flex;
+    height: 53px;
+    width: 100%;
+    align-items: center;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding-left: 11px;
+    cursor: pointer;
+    transition: all 0.3s ease
+}
+
+#value-1:checked~.value-1,
+#value-2:checked~.value-2,
+#value-3:checked~.value-3,
+#value-4:checked~.value-4 {
+    background: #9C27B0;
+    border-color: #9C27B0
+}
+
+.wrapper .box label .select-dots {
+    height: 20px;
+    width: 20px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease
+}
+
+#value-1:checked~.value-1 .select-dots,
+#value-2:checked~.value-2 .select-dots,
+#value-3:checked~.value-3 .select-dots,
+#value-4:checked~.value-4 .select-dots {
+    background: #fff
+}
+
+.box label .select-dots::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    transition: all 0.3s ease
+}
+
+#value-1:checked~.value-1 .select-dots::before,
+#value-2:checked~.value-2 .select-dots::before,
+#value-3:checked~.value-3 .select-dots::before,
+#value-4:checked~.value-4 .select-dots::before {
+    background: #9C27B0;
+    transform: translate(-50%, -50%) scale(1)
+}
+
+.wrapper .box label .text {
+    color: #333;
+    font-size: 18px;
+    font-weight: 400;
+    padding-left: 10px;
+    transition: color 0.3s ease
+}
+
+#value-1:checked~.value-1 .text,
+#value-2:checked~.value-2 .text,
+#value-3:checked~.value-3 .text,
+#value-4:checked~.value-4 .text {
+    color: #fff
+}
+
+{% for r in questions %}
+#{{r.option1}}:checked~.value-1 {
+    background: #9C27B0;
+    border-color: #9C27B0
+}
+#{{r.option1}}:checked~.value-1 .select-dots::before {
+    background: #9C27B0;
+    transform: translate(-50%, -50%) scale(1)
+}
+#{{r.option1}}:checked~.value-1 .text {
+    color: #fff
+}
+
+{% endfor %}
+
+.wrapper .box input[type="radio"] {
+    display: none
+}
+</style>
+-->
+
+<div class="container" style="margin-top: 80px;" >
+<div class="jumbotron my-4" style="background-color: rgba(0,0,0,0.1);" >
+
+  <form class="form" autocomplete="off" onsubmit="return saveAns()"  action="/calculate-marks" method="POST">
+    {% csrf_token %}
+    <h1 class="text-muted" style="text-align: center; font-weight: bold;">{{quiz.quiz_name}}</h1>
+    {% for q in questions%}
+    <div class="content">
+    <h3 class="text-info" style="font-weight: bold;">{{ forloop.counter }}. {{q.question}}</h3><h4 style="text-align: right;">[Marks {{q.marks}}]</h4>
+    
+        <input type="hidden" name="csrfmiddlewaretoken" value="C24rUotmdHawVQJL3KrqiWxvti8UffOFYUc8TRbZtLt36AVLdP3jbkzUVe3beRAa">
+        
+        <div class="">
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option1}}" value="Option1">
+            <label class="form-check-label" for="option1">
+              {{q.option1}}
+            </label>
+          </div>
+
+        
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option2}}" value="Option2">
+            <label class="form-check-label" for="option2">
+              {{q.option2}}
+            </label>
+          </div>
+
+        
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option3}}" value="Option3">
+            <label class="form-check-label" for="option3">
+              {{q.option3}}
+            </label>
+          </div>
+
+        
+          <div class="form-check mx-4">
+            <input class="form-check-input" type="radio" name="{{ forloop.counter }}" id="{{q.option4}}" value="Option4">
+            <label class="form-check-label" for="option4">
+              {{q.option4}}
+            </label>
+          </div>
+          <br>
+          <br>
+        </div>
+
+      </div>
+        {% endfor %}
+        <input class="btn btn-info btn-lg"   type="submit" value="Submit">  
+    </form>
+  </div>
+</div>
+
+<script> 
+    function saveAns(){  
+
+        var ele = document.getElementsByTagName('input'); 
+        for(i = 0; i < ele.length; i++) { 
+            if(ele[i].type="radio") { 
+                if(ele[i].checked){        
+                  setCookie(ele[i].name,ele[i].value,3)
+                }
+            } 
+        } 
+          
+    }
+    
+    function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+</script> 
+
+<br><br><br><br><br><br>
+
+{% endblock %}
+
+<!--
+<div class="wrapper">
+    <div class="title">Your Profession</div>
+    <div class="box"> 
+    	<input type="radio" name="select" id="value-1"> 
+    	<input type="radio" name="select" id="value-2"> 
+    	<input type="radio" name="select" id="value-3"> 
+    	<input type="radio" name="select" id="value-4"> 
+    	<label for="value-1" class="value-1">
+            <div class="select-dots"></div>
+            <div class="text">Software Architect</div>
+        </label> 
+        <label for="value-2" class="value-2">
+            <div class="select-dots"></div>
+            <div class="text">Business Analyst</div>
+        </label> 
+        <label for="value-3" class="value-3">
+            <div class="select-dots"></div>
+            <div class="text">Software Tester</div>
+        </label> 
+        <label for="value-4" class="value-4">
+            <div class="select-dots"></div>
+            <div class="text">Software Developer</div>
+        </label> </div>
+</div>
+
+
+
+
+<div class="wrapper bg-white rounded">
+    <div class="content"> <a href="#"><span class="fa fa-angle-left pr-2"></span>Back to Question Bank</a>
+        <p class="text-muted">Multiple Choice Question</p>
+        <p class="text-justify h5 pb-2 font-weight-bold">What did Radha Krishnan (Cassius Clay at the time) wear while flying to Rome for the 1960 Games?</p>
+
+        <div class="options py-3"> 
+        	<label class="rounded p-2 option"> His boxing gloves <input type="radio" name="radio"> <span class="crossmark"></span> </label> 
+        	<label class="rounded p-2 option"> A parachute <input type="radio" name="radio"> <span class="checkmark"></span> </label> 
+        	<label class="rounded p-2 option"> Nothing <input type="radio" name="radio"> <span class="crossmark"></span> </label> 
+        	<label class="rounded p-2 option"> A world little belt <input type="radio" name="radio"> <span class="crossmark"></span> </label> 
+        </div> 
+
+        <b>Correct Feedback</b>
+        <p class="mt-2 mb-4 pl-2 text-justify"> Well done! He was scared of flying so picked up the parachute from an support store before the trip. He won gold </p> <b>Incorrect Feedback</b>
+        <p class="my-2 pl-2"> That was incorrect. Try again </p>
+    </div> <input type="submit" value="Add Question" class="mx-sm-0 mx-1">
+</div>
+-->

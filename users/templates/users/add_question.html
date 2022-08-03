@@ -1,0 +1,110 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!--<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 bg-img py-5 text-center text-light">
+            <h2 style="text-align:center; color:blue; margin-top: 80px;">ADD QUIZ</h2>
+        </div>
+        <div class="col-md-6 mx-auto p-3 bg-light my-2">
+
+<form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;" enctype="multipart/form-data">
+    {%csrf_token%}
+    {{questionForm|crispy}}
+<button type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>
+</div>
+</div>
+-->
+
+<div class="container-fluid">
+        <div class="row py-4">
+            <div class="col-md-6 ">
+                <div class=" text-center py-4">
+                    <h2 style="text-align:center; margin-top: 80px;">Add question</h2>
+                    <form method="POST" autocomplete="off" style="margin:100px;margin-top: 0px;" enctype="multipart/form-data">
+    				{%csrf_token%}
+    				{{questionForm|crispy}}
+					<button type="submit" class="btn btn-primary">Add</button>
+  					</form>
+                </div>
+            </div> 
+            <div class="col-md-4" style="">
+            	<div class="py-4" style="text-align: justify;">
+            		<h2 style="text-align:center; margin-top: 80px;">All questions</h2>
+
+  <div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+
+          <th>Question</th>
+         
+          <th>Marks</th>
+          <th>Delete Question</th>
+        </tr>
+      </thead>
+      {% for c in questions %}
+      <tr>
+
+        <td> {{c.question}}</td>
+        
+        <td>{{c.marks}}</td>
+        <td><a href="" type="button" style="margin-right: 5px; float: right; color: black;" data-toggle="modal" data-target="#id{{c.id}}"><i class="fas fa-trash"></i></a></td>
+
+
+
+<div class="modal fade" id="id{{c.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+	<h5 class="modal-title" id="exampleModalLongTitle">Are you sure you want to delete?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" onclick="remove_question('{{c.id}}')">Confirm Delete</button>
+        <!--<a class="btn bth-sm" href="{% url 'del_question' %}?pid={{c.id}}">Delete</a>-->
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+                </div>
+            </div>   
+        </div>
+</div>
+
+
+
+<script>
+	//alert("{{status}}");
+	//window.location = "/content/"
+	function remove_question(id){
+		$.ajax({
+			//console.log('done');
+			url:"{% url 'del_question' %}",
+			data:{delete_question:id},
+			success:function(data){
+				alert("deleted successfully");
+				window.location.reload();
+			}
+		})
+	}
+</script>
+{% endblock %}

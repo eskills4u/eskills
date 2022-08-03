@@ -1,0 +1,94 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+<div>
+	<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 bg-img py-5 text-center text-light">
+            <h1>Choose Topics</h1>
+        </div>
+        <div class="col-md-6 mx-auto p-3 bg-light my-2">
+        	<form action="" method="POST">
+        		{% csrf_token %}
+        		<div class="form-group">
+                    <div class="row">
+        		{% for t in topics %}
+        				<div class="col-md-6">
+                            <input class="form-check-input" type="checkbox" name="chosen" value={{t}} id="{{t}}">
+            				<label class="form-check-label" for={{t}}>
+              				{{t}}
+            				</label>
+                            
+                        </div>
+        		{% endfor %}
+        			</div>
+        		</div>
+        		<div class="form-group">
+                    <input type="submit" value="recommend" class="btn">
+                </div>
+        	</form>
+        </div>
+
+        
+    </div>
+    </div>
+
+    <div class="mx-auto">
+        {% for i in courses %}
+        {% for j in i%}
+        <div id="" class="post">
+    	<img src="/media/{{j.course_image}}" alt="" class="slider-image">
+    	<div class="post-info">
+        <h3><a href="{% url 'single_course' %}?pid={{j.id}}">{{j.course_name}}</a></h3>
+        <i class="far fa-user">{{j.tutor.first_name}} {{j.tutor.last_name}}</i>
+        &nbsp;
+        <form action="{% url 'cart' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" value="{{j.id}}" name="pid">
+        <button type="submit" class="btnsmall">
+        	<i class="fa fa-shopping-cart"> Add to cart</i>
+        </button>
+        </form>
+        <!--<i class="far fa-calendar">Jul 1 2021</i>-->
+        
+    </div>
+</div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+
+<style type="text/css">
+.post{
+  height: 300px;
+  width: 300px;
+  margin: 30px 30px;
+  display: inline-block;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 1rem 1rem 1rem -1rem #989ca3;
+}
+
+.post .post-info{
+  height: 63px;
+  padding: 5px 5px;
+  /*border: 1px solid green;*/
+}
+
+.post .post-info h3{
+  color: #843b62;
+  margin: 4px;
+}
+.post .post-info h3 a{
+	color: #843b62;
+}
+
+.post .slider-image{
+  width: 100%;
+  height: 200px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+</style>
+{% endblock content %}

@@ -1,0 +1,152 @@
+:root{
+    
+    --gradient:linear-gradient(90deg,#d802bc,#3e32a8);
+    --gradientt:linear-gradient(90deg,#d802bc,#3e32a8);
+}
+html::-webkit-scrollbar-thumb{
+    background:linear-gradient(#d802bc,#3e32a8);
+    
+}
+*{
+    padding: 0;
+    margin:0;
+ }
+
+ body{
+     margin:0;
+     padding:0;
+     background:#ccc;
+     font-family: Arial; 
+     background:url(books.jpg); 
+     background-size: cover; 
+     background-position: center;
+     font-family: 'Adamina';
+ 
+ }
+ 
+ 
+ .start{
+     padding-left: 120px;
+     font:20px "Libre Baskerville";
+     font-family: 'Adamina';
+     font-size: 22px;
+     text-align: center;
+    
+}
+ h2{
+     padding-left: 100px;
+ }
+.about1{
+    padding: 10px;
+    background-color:cyan;
+    margin: 10px;
+    position: absolute;
+    top: 70%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    height:520px;
+    width:760px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    display: flex;
+}
+.founder{
+    padding-left:100px; 
+    text-align: center;
+    font-size: 33px;
+    
+}
+.analyse{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 144%;
+    left:30%;
+    transform: translate(-50%,-50%);
+    height:200px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+}
+.assess{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 144%;
+    left:52.5%;
+    transform: translate(-50%,-50%);
+    height:200px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+
+}
+.assist{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 144%;
+    left:75%;
+    transform: translate(-50%,-50%);
+    height:200px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+
+} 
+.create_an_account{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 200%;
+    left:30%;
+    transform: translate(-50%,-50%);
+    height:310px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+} 
+.choose_a_plan{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 200%;
+    left:52.5%;
+    transform: translate(-50%,-50%);
+    height:310px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+} 
+.win_at_teaching{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 200%;
+    left:75%;
+    transform: translate(-50%,-50%);
+    height:310px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+} 
+.benefit{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 310%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    height:500px;
+    width:1000px;
+    background-color:lightpink;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+} 
+

@@ -1,0 +1,543 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/eskill.css' %}">
+
+<style type="text/css">
+:root{
+    
+    --gradient:linear-gradient(90deg,#d802bc,#3e32a8);
+    --gradientt:linear-gradient(90deg,#d802bc,#3e32a8);
+}
+html::-webkit-scrollbar-thumb{
+    background:linear-gradient(#d802bc,#3e32a8);
+    
+}
+*{
+    padding: 0;
+    margin:0;
+ }
+
+ body{
+     font-size: 130%;
+     margin:0;
+     padding:0;
+     background:#ccc;
+     font-family: Arial; 
+     background:url(books.jpg); 
+     background-size: cover; 
+     background-position: center;
+     font-family: 'Adamina';
+ 
+ }
+ 
+ 
+ .start{
+     padding-left: 120px;
+     font:20px "Libre Baskerville";
+     font-family: 'Adamina';
+     font-size: 22px;
+     text-align: center;
+    
+}
+ h2{
+     padding-left: 100px;
+ }
+/*.about1{
+    padding: 10px;
+    background-color:cyan;
+    margin: 10px;
+    position: absolute;
+    top: 77%;
+    left:49%;
+    transform: translate(-50%,-50%);
+    height:490px;
+    width:1525px;
+    background-color:#fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: justify;
+    display: block;
+    font-size: 1.8rem;
+}*/
+
+.about1{
+    padding: 10px;
+    background-color:cyan;
+    margin: 10px;
+    position: absolute;
+    top: 79%;
+    left:49%;
+    transform: translate(-50%,-50%);
+    height:490px;
+    width:1425px;
+    background-color:#fff;
+    
+    text-align: justify;
+    display: block;
+    font-size: 1.8rem;
+}
+
+.founder{
+    padding-left:100px; 
+    text-align: center;
+    font-size: 33px;
+    font-weight: ;
+    
+}
+.analyse{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 155%;
+    left:30%;
+    transform: translate(-50%,-50%);
+    height:200px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 16px;
+}
+.assess{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 155%;
+    left:52.5%;
+    transform: translate(-50%,-50%);
+    height:200px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 16px;
+
+}
+.assist{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 155%;
+    left:75%;
+    transform: translate(-50%,-50%);
+    height:200px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 16px;
+
+} 
+.create_an_account{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 210%;
+    left:30%;
+    transform: translate(-50%,-50%);
+    height:310px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 14px;
+} 
+.choose_a_plan{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 210%;
+    left:52.5%;
+    transform: translate(-50%,-50%);
+    height:310px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 14px;
+} 
+.win_at_teaching{
+    margin: 0;
+    padding: 12px;
+    position: absolute;
+    top: 210%;
+    left:75%;
+    transform: translate(-50%,-50%);
+    height:310px;
+    width:320px;
+    background-color:#E6E6FA;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 14px;
+} 
+.benefits{
+    margin: 0px;
+    padding: 12px;
+   
+    
+    transform: translate(-50%,-50%);
+    height:500px;
+    width:1000px;
+    background-color:lightpink;
+    background-size: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+} 
+
+/*
+.benefits{
+    margin: 10px;
+    padding: 12px;
+    position: relative;
+    
+    transform: translate(-50%,-50%);
+    height:500px;
+    width:900px;
+    background-color:lightpink;
+    background-size: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+} 
+*/
+
+</style>
+
+
+
+<!--<section class="home" id="home" style="background:url({% static 'users/img/library1.jpg' %}) no-repeat;background-size: cover;
+    background-position: center;
+    background-attachment: fixed; height: 50vh;">
+
+    <h1>ESkills4U</h1>
+    <p></p>
+
+
+    <div class="col-md-6 mx-auto my-5">
+        <form action="{% url 'all_courses' %}" >
+            <div class="container">
+                <div class="row">
+                
+                    <div class="col-md-7" style="margin-top: 3%; height: 20px;">
+                        <input type="text" name="qry" class="form-control" placeholder="Search by Course Name...">
+                    </div>
+                    {% comment %} <div class="col-md-5">
+                        <input type="text" name="price" class="form-control" placeholder="Search by Price Less than...">
+                    </div> {% endcomment %}
+                    <div class="col-md-2">
+                        <button type="submit" class="btn">Search</button>
+                    </div>
+                
+                </div>
+            </div>
+            </form>
+    </div>
+
+
+    {% if user.is_authenticated %}
+    <a href="{% url 'recommend' %}"><button id="" class="btn">Recommend</button></a>
+    {% else %}
+    <a href="{% url 'register' %}"><button id="" class="btn">Register</button></a>
+    {% endif %}
+
+    <div class="shape"></div>
+
+</section>
+-->
+<!-- home section ends -->
+
+<!-- about section starts  -->
+
+<!--
+
+<section class="about" id="about">
+
+    <div class="image">
+        <img src="images/about-img.svg" alt="">
+    </div>
+
+    <div class="content">
+        <h3>why choose us?</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam aperiam quaerat dolor voluptas nobis voluptates illum? Inventore voluptas dolore voluptates.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex delectus ducimus dignissimos pariatur. Amet sed distinctio earum dolorum nulla, in obcaecati aliquid modi quos magni ducimus culpa nobis laudantium incidunt.</p>
+        <a href="#"><button class="btn">learn more</button></a>
+    </div>
+
+
+</section>
+
+-->
+
+<!-- about section ends -->
+
+<div style="margin-top: 40px;">
+    <h2></h2>
+    </div>
+<div class="container-fluid" style="background:url('/static/users/img/banner.png');background-size:100% 100%; margin-top: 80px;height: 250px;">
+        <div class="row py-5" style="background:rgba(0,0,0,0)">
+            <div class="col-md-12 py-5 my-5 text-light text-center font-weight-bold text-uppercase">
+                <strong style="font-size: 40px;"></strong>
+            </div>
+        </div>
+    </div>
+<!--<div class="start">
+        Personalized e-Skilling Platform.<br>
+        Empower and Personalize Your Upskilling Journey With<span style="color: #FF00FF"> ‘eSkills4U’</span>
+    </div>--> <br>
+
+    
+
+    <!--<h2 style="color:blue;text-align: center;font-size: 2rem;">About ‘eSkills4U’</h2>--><br>
+    <div class="about1"><br>
+        <h2 style="color:#d802bc;text-align: center;font-size: 3.7rem;">About ‘eSkills4U’</h2><br>
+    <span style="font-weight: 800; color:#d802bc; ">‘eSkills4U’</span> (which stems from “e-skills for you”) is the only personalized skilling training
+    platform for homemakers with a mission to empower her digital skills, kick  start online
+    business and achieve financial independence. We work exclusively with homemakers from
+    rural and urban rural areas to turn their hobby into an online  profitable business and achieve
+    financial independence. In turn, to provide a  complete eco-system for every homemaker,
+    small and medium business owners. <br>
+    Unpaid work imposes cost in the form of missed opportunities for education, skill  acquisition
+    or improvement, and public participation. Homemakers are a largely forgotten audience.
+    Homemakers have a desire to be respected, to be financially independent and above all, to
+    be recognized. There are over 200 million literate homemakers in urban India out of which
+    148 million are not employed or studying.  ‘eSkills4U’ plans to make homemakers financially 
+    independent in the coming years.<br>
+    That’s why our vision is to empower Indian Women through education to earn
+    recognition, respect and financial independence.  Upon an in-depth analysis of our market, 
+    we’ve come to know that there are over 200 million literate homemakers in urban India out of
+     which 148 million are not employed or studying. The Pandemic has shown significant growth 
+     in online  business. Markets have grown, and so have the ideas of making money. It is a great
+    time for homemakers to start a business, earn money online, share knowledge, art,
+    and start a new income stream following a passion and be recognized.<br>
+    To fuel our growth and help us hit our goals, we’re seeking a 50 Lakhs investment
+    in our company. This will help us cover our startup costs and provide us with
+    approximately one year’s worth of operating capital while we work to recoup our
+    initial investment, with an ultimate goal of breaking even in two years.<br><br>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br>
+    <div class="founder">
+    <h1 style="color:    #191970;font-weight:500"><br>
+    What 'eSkills4U' Does</h1></div> <br><br>
+
+
+    <div class="meet-founder">
+
+        <div class="analyse"><h3 style="color: #d802bc;">Analyze your interest & profile </h3><br>
+            We try to explore your <br>interest, skills & abilities. 
+        </div>
+        <div class="assess">
+            <h3 style="color: #d802bc;">Assess your needs for<br> 
+            personal growth in three<br> 
+            important categories:<br></h3><br>
+               Based on a self-administered<br> 
+               test we identify your areas of<br> 
+               weakness necessary to <br>
+               develop. 
+        </div>
+        <div class="assist">
+            <h3 style="color: #d802bc;">Assist you in taking informed<br>
+            upskilling decisions</h3><br>
+                  We further provide real-time<br> 
+                  insights, bring personalized <br>
+                  courses, mentorship &<br> 
+                  workshops at an ease of a <br>
+                  click.
+        </div><br><br><br><br><br><br><br><br><br><br><br>
+    </div><br> 
+
+
+    <h1 style="text-align:center;color: #191970">How ‘eSkills4U’ Work </h1>
+    <div class="create_an_account">
+        <br><img src="{% static 'users/img/test.jpg' %}" style="width:70px;height:80px;"><br>
+        <br><h3 style="color: #d802bc;">CREATE AN ACCOUNT</h3> <br>
+            Create your free account and<br>
+            get three credits to try before<br>
+            you buy.
+    </div>
+    <div class="choose_a_plan"> 
+        <img src="{% static 'users/img/apple.png' %}" style="width:70px;height:90px;"><br>
+        <br><h3 style="color: #d802bc;">CHOOSE A COURSE</h3> 
+        <h4 style="color: #d802bc;">Track your progress</h4> 
+        <br>Get unlimited access to our
+        courses.PBL
+        projects,and teaching packs<br>
+        with any paid membership plan<br>
+        There's an option for every<br> 
+        budget!
+    </div>
+    <div class="win_at_teaching">
+        <br><img src="{% static 'users/img/winningcup.jpg' %}" style="width:70px;height:90px;"><br>
+        <br><h3 style="color: #d802bc;">START LEARNING</h3>
+        <br>Efficiently deliver high-quality<br>
+        instruction and enhance<br>
+        standard curriculam using<br>
+        TeacherVision's trusted<br> materials.
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!--<h2 style="padding-left:270px;color:darkblue;font-size: 27px;">Create An Account</h2> <br>
+    <h2 style="padding-left:270px;color:blue;font-size: 27px;">Choose a Course</h2> <br>
+    <div style="padding-left:270px;font-size: 27px;">Track your growth and progress to become ready for your dream career !<br>
+    <br>Start Learning </div>
+    <br>-->
+    <h1 style="color:darkblue;text-align:center">
+   <a href="{% url 'all_sections' %}" style="text-decoration: none; color:#d802bc; ">Click here to Explore Courses By Category</a> </h1><br>
+    <div class="benefits" style="display:inline;justify-content: space-between;">
+        <h1 style="color:#191970;text-align: center;">Benefits of Learning with Us</h1> <br>
+        <div class="parent1" style="display: flex;justify-content: space-between; padding: 100px;"> 
+             <div><img src="{% static 'users/img/24hr.png' %}" style="width:100px;height:100px;">
+                  <br><div style="text-align:center">LEARN ANY TIME<br>ANY WHERE</div></div> 
+             <div><img src="{% static 'users/img/video2.png' %}" style="width:100px;height:100px;">
+                  <div style="text-align:center">WATCH EASY<br> VIDEO CLASSES</div></div> 
+            <div><img src="{% static 'users/img/book.png' %}" style="width:100px;height:100px;">
+                  <div style="text-align:center">GET YOUR FREE<br>STARTER KIT</div></div> 
+            <div><img src="{% static 'users/img/language2.jpg' %}" style="width:100px;height:100px;">
+                  <div style="text-align:center">LEARN IN YOUR<br>LANGUAGE</div></div> 
+            <div><img src="{% static 'users/img/faculty1.jpg' %}" style="width:100px;height:100px;">
+                 <div style="text-align:center">GET FACULTY<br> SUPPORT</div></div> 
+        </div> <br><br>
+        <div class="parent2" style="display:flex;justify-content: space-between;padding-left: 100px; padding-right: 100px;">
+            <div><img src="{% static 'users/img/certificate.png' %}" style="width:100px;height:100px;">
+               <div style="text-align:center">GET CERTIFIED BY<br>ESKILLS4U</div></div> 
+            <div><img src="{% static 'users/img/fashion2.png' %}" style="width:100px;height:100px;">
+                <div style="text-align:center">PARTICIPATE IN <br>FASHION SHOWS</div></div> 
+            <div><img src="{% static 'users/img/webinar1.png' %}" style="width:100px;height:100px;">
+                <div style="text-align:center">ATTEND FREE  <br>WEBINARS <br>& WORKSHOPS</div> </div> 
+            <div><img src="{% static 'users/img/open_book4.jpg' %}" style="width:100px;height:100px;">
+                <div style="text-align:center">GET ADDITIONAL<br>STUDY MATERIAL</div></div>   
+            <div><img src="{% static 'users/img/business.png' %}" style="width:100px;height:100px;">
+                <div style="text-align:center">GET SUPPORT TO <br>START<br>YOUR OWN <br> BUSINESS</div></div>
+        </div>
+    </div>
+    <!--<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>--> 
+    
+
+
+
+<!-- course section starts  -->
+<!--
+<section class="course" id="">
+
+<h1 class="heading">top courses</h1>
+
+<div class="box-container">
+
+   
+{% for c in courses %}
+{% if c.id in top %}
+    <div class="box">
+        <img src="/media/{{c.course_image}}" alt="">
+        <h3 class="price">&#8377;{{c.sale_price}}</h3>
+        <div class="content">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half"></i>
+            </div>
+            <a href="{% url 'single_course' %}?pid={{c.id}}" class="title">{{c.course_name}}</a>
+            <p class="details">{{c.details}}</p>
+            <div class="info">
+                <h3> <i class="far fa-clock"></i> 2 hours </h3>
+                <h3> <i class="far fa-calendar-alt"></i> 6 months </h3>
+                <h3> <i class="fas fa-book"></i> 12 modules </h3>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endfor %}
+    
+</div>
+
+</section>
+-->
+<br>
+<br>
+<!-- course section ends -->
+
+<!-- teacher section starts  -->
+
+<!--
+<section class="teacher" id="teacher">
+
+<h1 class="heading">our expert teachers</h1>
+
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. At non explicabo tempora modi, reprehenderit ratione sunt ea porro tenetur officiis alias sapiente praesentium voluptas cumque quo maiores dolores totam ex.</p>
+
+<a href="#"><button class="btn">learn more</button></a>
+
+</section>
+
+-->
+
+<!-- teacher section ends -->
+
+
+<!-- ff0057 nice color-->
+
+<!-- testimonials section starts -->
+<!--
+<section class="testimonials" id="testimonials">
+
+<div class="container">
+  <div class="box_test">
+    <div class="imgBox">
+      <img src="{% static 'users/img/sample1.jpg' %}" width="100%" height="100%">
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <p>
+        <h4>Mary Smith<br><span></span></h4>
+  </div>
+</div>
+
+<div class="container">
+  <div class="box_test">
+    <div class="imgBox">
+      <img src="{% static 'users/img/profile-3.jpeg' %}" width="100%" height="100%">
+    </div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+      <p>
+        <h4>Jenny Kim<br><span></span></h4>
+  </div>
+</div>
+
+</section>
+-->
+
+<!-- testimonials section ends -->
+
+
+<!-- contact section starts  -->
+
+<!--<section class="contact" id="contact">
+
+<h1 class="heading">contact us</h1>
+
+<div class="row">
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="full name" class="box" name="">
+        <input type="email" placeholder="your email" class="box">
+      
+        <textarea name="" id="" cols="30" rows="10" class="box address" placeholder="type your message..."></textarea>
+        <input type="submit" class="btn" value="send">
+    </form>
+
+    <div class="image">
+        <img src="" alt="">
+    </div>
+
+</div>
+
+</section>
+-->
+
+<!-- contact section ends -->
+
+
+
+
+
+
+
+{% endblock content %}

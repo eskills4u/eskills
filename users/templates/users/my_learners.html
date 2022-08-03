@@ -1,0 +1,39 @@
+{% extends 'users/dashboard_base.html' %}
+{% load static %}
+{% block head %}
+<style type="text/css">
+    .abcd:hover{
+        box-shadow: 0px 0px 10px gray; padding: 10px;
+    }
+</style>
+{% endblock %}
+{% block dashboard %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 mt-2">
+            <h2 class="alert alert-primary">Dashboard &gt; My Learners ({{learners|length}})</h2> 
+        </div>
+        {% for i in learners %}
+        <div class="col-md-4 p-4">
+        <div class="card abcd">
+            <div class="card-header">
+                {% if i.profile_pic %}
+                    <img src="/media/{{i.profile_pic}}" style="height:150px;width:150px;border-radius:50%">
+                    {% else %}
+                    <img src="{% static 'users/img/blankuser.png' %}" style="height:150px;width:150px;border-radius:50%">
+                    {% endif %}
+            </div>
+            <div class="card-body">
+                <h4>{{i.first_name}} {{i.last_name}}</h4>
+                <p><i class="fa fa-user"></i> {{i.username}} </p>
+                <p><em>{{i.email}}</em></p>   
+                <!--<p><ins>{{i.contact}}</ins></p>    
+                <small>Member since : {{i.join}}</small>    -->
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
